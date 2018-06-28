@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2018 a las 22:00:14
+-- Tiempo de generación: 28-06-2018 a las 17:24:58
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_sibcatie`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clase`
+--
+
+CREATE TABLE `clase` (
+  `idClase` int(11) NOT NULL,
+  `nombre_clase` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `clase`
+--
+
+INSERT INTO `clase` (`idClase`, `nombre_clase`) VALUES
+(1, 'dfhsdgfhsfdg'),
+(4, 'fdghkjrfgsdfgh'),
+(5, 'sdfghdtyhkfdghhjs'),
+(2, 'sdfgsdfgsdfg'),
+(3, 'sdfhsdfghdfgj'),
+(6, 'sfgjfgjuhksewsfg');
 
 -- --------------------------------------------------------
 
@@ -95,29 +118,53 @@ INSERT INTO `continente` (`idContinente`, `nombre_continente`) VALUES
 
 CREATE TABLE `determinadapor` (
   `idDeterminadaPor` int(11) NOT NULL,
-  `nombre_determinado` varchar(45) NOT NULL
+  `nombre_determinado` varchar(45) NOT NULL,
+  `fecha_determinado` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `determinadapor`
 --
 
-INSERT INTO `determinadapor` (`idDeterminadaPor`, `nombre_determinado`) VALUES
-(1, 'XjFTXRDUSfPSzEX'),
-(2, '6Y1oAF3hgH80HAG'),
-(3, 'sfqRK5SC9dNbvYk'),
-(4, '8feYCCUKOb5U3LX'),
-(5, '0P4oVjhXfTcCoU5'),
-(6, 'Pm8ivIvS5Fimn0j'),
-(7, 'KqGSxduhIVLPzXP'),
-(8, 'SongdYyKAyXMDUM'),
-(9, 'Ih3Qt5CHxOXMInU'),
-(10, 'YX6HQCCxC9lrqjF'),
-(11, 'dIZ8L3w6OYAzjHf'),
-(12, 'QyW5D0fTalNkmXB'),
-(13, 'pb3h0oU4zXBCNFG'),
-(14, 'F79b4Rt63vRHGEt'),
-(15, '1oXllUsvaLjLrJU');
+INSERT INTO `determinadapor` (`idDeterminadaPor`, `nombre_determinado`, `fecha_determinado`) VALUES
+(1, 'XjFTXRDUSfPSzEX', '0000-00-00'),
+(2, '6Y1oAF3hgH80HAG', '0000-00-00'),
+(3, 'sfqRK5SC9dNbvYk', '0000-00-00'),
+(4, '8feYCCUKOb5U3LX', '0000-00-00'),
+(5, '0P4oVjhXfTcCoU5', '0000-00-00'),
+(6, 'Pm8ivIvS5Fimn0j', '0000-00-00'),
+(7, 'KqGSxduhIVLPzXP', '0000-00-00'),
+(8, 'SongdYyKAyXMDUM', '0000-00-00'),
+(9, 'Ih3Qt5CHxOXMInU', '0000-00-00'),
+(10, 'YX6HQCCxC9lrqjF', '0000-00-00'),
+(11, 'dIZ8L3w6OYAzjHf', '0000-00-00'),
+(12, 'QyW5D0fTalNkmXB', '0000-00-00'),
+(13, 'pb3h0oU4zXBCNFG', '0000-00-00'),
+(14, 'F79b4Rt63vRHGEt', '0000-00-00'),
+(15, '1oXllUsvaLjLrJU', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `division`
+--
+
+CREATE TABLE `division` (
+  `idDivision` int(11) NOT NULL,
+  `nombre_division` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `division`
+--
+
+INSERT INTO `division` (`idDivision`, `nombre_division`) VALUES
+(3, 'asdfghsrtfghjwsrtgfh'),
+(2, 'sadfhdfgjhsfgh'),
+(4, 'sdfghsrftgyjhswrfgt'),
+(6, 'sdfghswrtygszw'),
+(1, 'sdfhdfghjsdgfhas'),
+(5, 'sdtghwrystghsz');
 
 -- --------------------------------------------------------
 
@@ -442,6 +489,29 @@ INSERT INTO `nombrecomun` (`idNombreComun`, `nombre_nombre_comun`, `lengua`, `Pl
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `orden`
+--
+
+CREATE TABLE `orden` (
+  `idOrden` int(11) NOT NULL,
+  `nombre_orden` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `orden`
+--
+
+INSERT INTO `orden` (`idOrden`, `nombre_orden`) VALUES
+(1, 'asdgtjukwsyjgsw'),
+(5, 'sdfghjswtghaft'),
+(4, 'sfgjswrdz'),
+(6, 'srtgfhsdfg'),
+(3, 'sryjstgjhsaz'),
+(2, 'swyjgswgjsw');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `planta`
 --
 
@@ -465,78 +535,82 @@ CREATE TABLE `planta` (
   `visible` tinyint(4) NOT NULL DEFAULT '0',
   `revision` tinyint(4) NOT NULL DEFAULT '1',
   `activo` tinyint(4) NOT NULL DEFAULT '1',
-  `excel` tinyint(4) DEFAULT NULL
+  `excel` tinyint(4) DEFAULT NULL,
+  `orden_idOrden` int(11) DEFAULT NULL,
+  `clase_idClase` int(11) DEFAULT NULL,
+  `reino_idReino` int(11) DEFAULT NULL,
+  `division_idDivision` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `planta`
 --
 
-INSERT INTO `planta` (`idPlanta`, `idMascara`, `Familia_idFamilia`, `Genero_idGenero`, `Epiteto_idEpiteto`, `fecha_ingreso`, `fuente_informacion`, `altura`, `autor`, `Forma_idForma`, `Color_idColor`, `TipoHoja_idTipoHoja`, `Continente_idContinente`, `ZonaCardinal_idZonaCardinal`, `reproduccion`, `DeterminadaPor_idDeterminadaPor`, `visible`, `revision`, `activo`, `excel`) VALUES
-(1, 1, 1, 1, 1, '2018-06-18', 'cXYsUTkhuItuJmSyldcl', '1', 'MTMdF0ewFmlKGAT', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(2, 1, 1, 1, 1, '2018-06-18', 'fwaB87LGjVVMwJpwDTiq', '1', 'SdUgUfctITI82RQ', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(3, 1, 1, 1, 1, '2018-06-18', '4uVBC5KegcjyaagPYbBn', '1', '4IHyMyMglDFkbmI', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(4, 1, 1, 1, 1, '2018-06-18', 'R5SwsMc3cDKPr9EFEER9', '1', 'BqX08AbBMASE44v', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(5, 1, 1, 1, 1, '2018-06-18', 'Tir4xLH3IZaZCHWWRFyt', '1', 'Yhcu9O95OAJV04o', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(6, 1, 1, 1, 1, '2018-06-18', 'VZXzUhCG01gKbAwB4F2d', '1', 'Xx6Vf7abIHLWLDp', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(7, 1, 1, 1, 1, '2018-06-18', 'Kp45ClwCp6Fh1CNa6BdP', '1', 'dWrNirOP52GtamN', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(8, 1, 1, 1, 1, '2018-06-18', 't4SiIG0KQJuG4OBgwpMx', '1', '0sXwW0TtcLY3Om0', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(9, 1, 1, 1, 1, '2018-06-18', 'OJ2OKSeAjkY1dDgijblR', '1', '9isVq8pNI1voM0H', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(10, 1, 1, 1, 1, '2018-06-18', 'FAlC6aUM5NGi9eZFEFMu', '1', 'zK7WcYWBfnPXdnp', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(11, 1, 1, 1, 1, '2018-06-18', 'Q7Tz4y7I8hWxgXOwsqSq', '1', 'xsxpKipxIdJjevl', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(12, 1, 1, 1, 1, '2018-06-18', 'EmJA6QJmv5E1al5V9G4J', '1', 'XOzhFxnF4rITgdY', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(13, 1, 1, 1, 1, '2018-06-18', 'M1JCwB9JZvV70XCWAPF4', '1', 'NvVVbOsC5hhdtn1', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(14, 1, 1, 1, 1, '2018-06-18', 'dCqcokoJmc2GmCOREkIP', '1', 'ZYzV8RF7rT4emxe', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(15, 1, 1, 1, 1, '2018-06-18', 'it3xR6Ad4cEGmJOWSU6k', '1', 'HwyDetkBZsXhORa', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(16, 1, 1, 1, 1, '2018-06-18', 'VuacVpZaKI1ajwrXEpmR', '1', 'ejp0xUCkTgBXuvc', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(17, 1, 1, 1, 1, '2018-06-18', 'CdXUUhQj6nztoMY38Xhc', '1', '3GRkpYEx1DnZRxW', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(18, 1, 1, 1, 1, '2018-06-18', 'ANFbvKqGtTN0SPAutyVS', '1', 'MHdCWsvsfwfCXDI', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(19, 1, 1, 1, 1, '2018-06-18', '9l7OI5mSGY532o5cGlVx', '1', 'J54VXU39UOvBiPw', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(20, 1, 1, 1, 1, '2018-06-18', 'R0KAaqI3j8v0xweMTk7A', '1', 'SAVD4GoCqroBIoS', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(21, 1, 1, 1, 1, '2018-06-18', 'L4M6UogKSK8xAQ4LtEHu', '1', 'qFGdUSuQ2L8VUGd', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(22, 1, 1, 1, 1, '2018-06-18', 'Cpayq60Iz1FPymByX0pD', '1', 'PS5sUzinzc8i08E', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(23, 1, 1, 1, 1, '2018-06-18', 'WU1a95rKVbTCfBi5YAX9', '1', 'UVGVEHCDu4cscBE', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(24, 1, 1, 1, 1, '2018-06-18', 'KPh1vMDzBoTg4g7G3Ujc', '1', 'IZzth6GjVGYBNPh', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(25, 1, 1, 1, 1, '2018-06-18', 'I1x2wxMTSOVIF1QEb6lU', '1', 'NAmbNHMYZ0rkd3B', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(26, 1, 1, 1, 1, '2018-06-18', 'M20wKvczAYfNuslHIqW4', '1', 'nLpdz8s9zeSBOgS', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(27, 1, 1, 1, 1, '2018-06-18', 'GJoaBmxALkP3Bydgzmnn', '1', 'FCE2JNEXwUJWqYZ', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(28, 1, 1, 1, 1, '2018-06-18', 'hrYDpv13NNFxK3WykHf8', '1', 'IgLM3qVahBTSUKo', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(29, 1, 1, 1, 1, '2018-06-18', 'tiJFDZzI28fjf9HMM1Ui', '1', 'CLPkU3rV8rzviQ3', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(30, 1, 1, 1, 1, '2018-06-18', 'WgrdQxTuog4Yg9UvDGFy', '1', 'HKIAJCUeJ4LbmQT', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(31, 1, 1, 1, 1, '2018-06-18', 'yykngMHBEs2TrOVmtPuT', '1', 'fzzoRCPw7S1g4EG', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(32, 1, 1, 1, 1, '2018-06-18', '0Y4c5xiZH5k5NuykkYNV', '1', 'rerchTW5dpkXQnW', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(33, 1, 1, 1, 1, '2018-06-18', 'W5FkQ1ORVRkqYkaSuxpf', '1', '6Doz0DkpybC0cIR', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(34, 1, 1, 1, 1, '2018-06-18', 'ITcT1cG554vIkSlMLU3g', '1', 'tItDauTS5iy0eyo', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(35, 1, 1, 1, 1, '2018-06-18', 'xIIupg5tZkgDkJSj2B7F', '1', '5TJuhS63nxbnWOb', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(36, 1, 1, 1, 1, '2018-06-18', 'aMevCG4nYFHarmmhcM22', '1', '0EEZXAlM7N8pd3H', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(37, 1, 1, 1, 1, '2018-06-18', 'PD2PBtrx4TFF8iZr9kjR', '1', '6b7pbeFP4fRhveY', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(38, 1, 1, 1, 1, '2018-06-18', 'qYG4NSzseHHJT9wWRmdF', '1', '2OLziE37KZw8iyL', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(39, 1, 1, 1, 1, '2018-06-18', 'WGeYIkxvJFqgyHB95HhU', '1', '2Fm8eqYiYXLmyTQ', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(40, 1, 1, 1, 1, '2018-06-18', '6nGlvKAKnzKulqKPlzfz', '1', 'FtCLV2k5L4fm2zU', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(41, 1, 1, 1, 1, '2018-06-18', 'hq1eA67u9COusgNLLwKU', '1', '10UFvS2El9B7GXR', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(42, 1, 1, 1, 1, '2018-06-18', 'Ig3g87pNUmRsd3z6ZMdw', '1', 'TRXCPM9vFFvRJ8Z', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(43, 1, 1, 1, 1, '2018-06-18', 'oX7X5s9avILcuelRWxnt', '1', 'gsBo6fF69vtWppi', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(44, 1, 1, 1, 1, '2018-06-18', '2FYDrzZrk3U7rlYWmXX8', '1', 'hysRtqnIJr6M4wl', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(45, 1, 1, 1, 1, '2018-06-18', 'syZAVSvM3CwbGZouHXXX', '1', 'AyRe89ACcw4Pyve', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(46, 1, 1, 1, 1, '2018-06-18', '0LoCz74BxNQ8QfqXTsAj', '1', '1PYcKvEJy0JUp69', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(47, 1, 1, 1, 1, '2018-06-18', 'jKirdtDCl7E1J7RC3Frv', '1', 'RfnenKvB3JdwzEV', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(48, 1, 1, 1, 1, '2018-06-18', '3egHiNg6au1ZCHZ1R3Cd', '1', 'bSnQYHirVJhODFh', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(49, 1, 1, 1, 1, '2018-06-18', 'wqXONsMfU5Wlu8BUcOXm', '1', 'C5YLTbqjiBl33W5', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(50, 1, 1, 1, 1, '2018-06-18', 'zZ8x3bbcWsZpOuBFcXEA', '1', 'R9isEGISFEqcp3s', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(51, 1, 1, 1, 1, '2018-06-18', 'c2ecBwjXW1qAPTESzzqg', '1', '9Lo4abOTMv8NePf', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(52, 1, 1, 1, 1, '2018-06-18', 'DvH5rsNMRQRbe2C4KP0n', '1', '9dSOeifhJz0JXb7', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(53, 1, 1, 1, 1, '2018-06-18', 'ONyjNOJQ77zjVNPG4jq0', '1', 'Nya5zV2Cn4ORzvh', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(54, 1, 1, 1, 1, '2018-06-18', 'ibZxFp8GQmF0gNvofsRc', '1', 'xlQoXE9M1C0Dl7m', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(55, 1, 1, 1, 1, '2018-06-18', 'gDJO6ihfFNBuNf9Wlx87', '1', 'vszuqczGmHdUsv4', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(56, 1, 1, 1, 1, '2018-06-18', 'qyWWhNOk0Q9EhAFCvkQK', '1', 'RQl6qnigUgDE54X', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(57, 1, 1, 1, 1, '2018-06-18', '6X15HxEHK4FbmCSpUrwn', '1', 'aedX99RNoI29RH9', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(58, 1, 1, 1, 1, '2018-06-18', '2fqrFBmZs2qN7xawezpc', '1', 'q2jxoisRb1w7mg5', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(59, 1, 1, 1, 1, '2018-06-18', 'AZz5lmu5EXRmdpPEduOA', '1', 'E2qS6XY20avAbgz', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(60, 1, 1, 1, 1, '2018-06-18', 'J5W5lpB2hdt2EmBR6Orv', '1', 'teQdqCp63P0kO78', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL),
-(61, 2018061901, 18, 29, 24, '2018-06-20', 'Nueva fuente de informacion', '20', 'Nuevo Autor', 7, 9, 4, 1, 3, 1, 6, 1, 0, 1, NULL),
-(62, 0, 29, 15, 4, '2018-06-20', 'asdff', '222', 'Nuevo Autor 2', 7, 8, 2, 3, 3, 1, 11, 1, 0, 1, NULL),
-(63, 0, 29, 15, 4, '2018-06-20', 'asdff', '222', 'Nuevo Autor 2', 7, 8, 2, 3, 3, 1, 11, 1, 0, 1, NULL),
-(64, 1, 2, 2, 2, '2018-06-21', 'asdgg', '12', 'asdgg', 2, 2, 2, 2, 2, 1, 2, 1, 1, 1, 1);
+INSERT INTO `planta` (`idPlanta`, `idMascara`, `Familia_idFamilia`, `Genero_idGenero`, `Epiteto_idEpiteto`, `fecha_ingreso`, `fuente_informacion`, `altura`, `autor`, `Forma_idForma`, `Color_idColor`, `TipoHoja_idTipoHoja`, `Continente_idContinente`, `ZonaCardinal_idZonaCardinal`, `reproduccion`, `DeterminadaPor_idDeterminadaPor`, `visible`, `revision`, `activo`, `excel`, `orden_idOrden`, `clase_idClase`, `reino_idReino`, `division_idDivision`) VALUES
+(1, 1, 1, 1, 1, '2018-06-18', 'cXYsUTkhuItuJmSyldcl', '1', 'MTMdF0ewFmlKGAT', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 1, 1, 1, '2018-06-18', 'fwaB87LGjVVMwJpwDTiq', '1', 'SdUgUfctITI82RQ', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(3, 1, 1, 1, 1, '2018-06-18', '4uVBC5KegcjyaagPYbBn', '1', '4IHyMyMglDFkbmI', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(4, 1, 1, 1, 1, '2018-06-18', 'R5SwsMc3cDKPr9EFEER9', '1', 'BqX08AbBMASE44v', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(5, 1, 1, 1, 1, '2018-06-18', 'Tir4xLH3IZaZCHWWRFyt', '1', 'Yhcu9O95OAJV04o', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(6, 1, 1, 1, 1, '2018-06-18', 'VZXzUhCG01gKbAwB4F2d', '1', 'Xx6Vf7abIHLWLDp', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(7, 1, 1, 1, 1, '2018-06-18', 'Kp45ClwCp6Fh1CNa6BdP', '1', 'dWrNirOP52GtamN', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(8, 1, 1, 1, 1, '2018-06-18', 't4SiIG0KQJuG4OBgwpMx', '1', '0sXwW0TtcLY3Om0', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(9, 1, 1, 1, 1, '2018-06-18', 'OJ2OKSeAjkY1dDgijblR', '1', '9isVq8pNI1voM0H', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(10, 1, 1, 1, 1, '2018-06-18', 'FAlC6aUM5NGi9eZFEFMu', '1', 'zK7WcYWBfnPXdnp', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(11, 1, 1, 1, 1, '2018-06-18', 'Q7Tz4y7I8hWxgXOwsqSq', '1', 'xsxpKipxIdJjevl', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(12, 1, 1, 1, 1, '2018-06-18', 'EmJA6QJmv5E1al5V9G4J', '1', 'XOzhFxnF4rITgdY', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(13, 1, 1, 1, 1, '2018-06-18', 'M1JCwB9JZvV70XCWAPF4', '1', 'NvVVbOsC5hhdtn1', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(14, 1, 1, 1, 1, '2018-06-18', 'dCqcokoJmc2GmCOREkIP', '1', 'ZYzV8RF7rT4emxe', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(15, 1, 1, 1, 1, '2018-06-18', 'it3xR6Ad4cEGmJOWSU6k', '1', 'HwyDetkBZsXhORa', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(16, 1, 1, 1, 1, '2018-06-18', 'VuacVpZaKI1ajwrXEpmR', '1', 'ejp0xUCkTgBXuvc', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(17, 1, 1, 1, 1, '2018-06-18', 'CdXUUhQj6nztoMY38Xhc', '1', '3GRkpYEx1DnZRxW', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(18, 1, 1, 1, 1, '2018-06-18', 'ANFbvKqGtTN0SPAutyVS', '1', 'MHdCWsvsfwfCXDI', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(19, 1, 1, 1, 1, '2018-06-18', '9l7OI5mSGY532o5cGlVx', '1', 'J54VXU39UOvBiPw', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(20, 1, 1, 1, 1, '2018-06-18', 'R0KAaqI3j8v0xweMTk7A', '1', 'SAVD4GoCqroBIoS', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(21, 1, 1, 1, 1, '2018-06-18', 'L4M6UogKSK8xAQ4LtEHu', '1', 'qFGdUSuQ2L8VUGd', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(22, 1, 1, 1, 1, '2018-06-18', 'Cpayq60Iz1FPymByX0pD', '1', 'PS5sUzinzc8i08E', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(23, 1, 1, 1, 1, '2018-06-18', 'WU1a95rKVbTCfBi5YAX9', '1', 'UVGVEHCDu4cscBE', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(24, 1, 1, 1, 1, '2018-06-18', 'KPh1vMDzBoTg4g7G3Ujc', '1', 'IZzth6GjVGYBNPh', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(25, 1, 1, 1, 1, '2018-06-18', 'I1x2wxMTSOVIF1QEb6lU', '1', 'NAmbNHMYZ0rkd3B', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(26, 1, 1, 1, 1, '2018-06-18', 'M20wKvczAYfNuslHIqW4', '1', 'nLpdz8s9zeSBOgS', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(27, 1, 1, 1, 1, '2018-06-18', 'GJoaBmxALkP3Bydgzmnn', '1', 'FCE2JNEXwUJWqYZ', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(28, 1, 1, 1, 1, '2018-06-18', 'hrYDpv13NNFxK3WykHf8', '1', 'IgLM3qVahBTSUKo', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(29, 1, 1, 1, 1, '2018-06-18', 'tiJFDZzI28fjf9HMM1Ui', '1', 'CLPkU3rV8rzviQ3', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(30, 1, 1, 1, 1, '2018-06-18', 'WgrdQxTuog4Yg9UvDGFy', '1', 'HKIAJCUeJ4LbmQT', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(31, 1, 1, 1, 1, '2018-06-18', 'yykngMHBEs2TrOVmtPuT', '1', 'fzzoRCPw7S1g4EG', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(32, 1, 1, 1, 1, '2018-06-18', '0Y4c5xiZH5k5NuykkYNV', '1', 'rerchTW5dpkXQnW', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(33, 1, 1, 1, 1, '2018-06-18', 'W5FkQ1ORVRkqYkaSuxpf', '1', '6Doz0DkpybC0cIR', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(34, 1, 1, 1, 1, '2018-06-18', 'ITcT1cG554vIkSlMLU3g', '1', 'tItDauTS5iy0eyo', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(35, 1, 1, 1, 1, '2018-06-18', 'xIIupg5tZkgDkJSj2B7F', '1', '5TJuhS63nxbnWOb', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(36, 1, 1, 1, 1, '2018-06-18', 'aMevCG4nYFHarmmhcM22', '1', '0EEZXAlM7N8pd3H', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(37, 1, 1, 1, 1, '2018-06-18', 'PD2PBtrx4TFF8iZr9kjR', '1', '6b7pbeFP4fRhveY', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(38, 1, 1, 1, 1, '2018-06-18', 'qYG4NSzseHHJT9wWRmdF', '1', '2OLziE37KZw8iyL', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(39, 1, 1, 1, 1, '2018-06-18', 'WGeYIkxvJFqgyHB95HhU', '1', '2Fm8eqYiYXLmyTQ', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(40, 1, 1, 1, 1, '2018-06-18', '6nGlvKAKnzKulqKPlzfz', '1', 'FtCLV2k5L4fm2zU', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(41, 1, 1, 1, 1, '2018-06-18', 'hq1eA67u9COusgNLLwKU', '1', '10UFvS2El9B7GXR', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(42, 1, 1, 1, 1, '2018-06-18', 'Ig3g87pNUmRsd3z6ZMdw', '1', 'TRXCPM9vFFvRJ8Z', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(43, 1, 1, 1, 1, '2018-06-18', 'oX7X5s9avILcuelRWxnt', '1', 'gsBo6fF69vtWppi', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(44, 1, 1, 1, 1, '2018-06-18', '2FYDrzZrk3U7rlYWmXX8', '1', 'hysRtqnIJr6M4wl', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(45, 1, 1, 1, 1, '2018-06-18', 'syZAVSvM3CwbGZouHXXX', '1', 'AyRe89ACcw4Pyve', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(46, 1, 1, 1, 1, '2018-06-18', '0LoCz74BxNQ8QfqXTsAj', '1', '1PYcKvEJy0JUp69', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(47, 1, 1, 1, 1, '2018-06-18', 'jKirdtDCl7E1J7RC3Frv', '1', 'RfnenKvB3JdwzEV', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(48, 1, 1, 1, 1, '2018-06-18', '3egHiNg6au1ZCHZ1R3Cd', '1', 'bSnQYHirVJhODFh', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(49, 1, 1, 1, 1, '2018-06-18', 'wqXONsMfU5Wlu8BUcOXm', '1', 'C5YLTbqjiBl33W5', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(50, 1, 1, 1, 1, '2018-06-18', 'zZ8x3bbcWsZpOuBFcXEA', '1', 'R9isEGISFEqcp3s', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(51, 1, 1, 1, 1, '2018-06-18', 'c2ecBwjXW1qAPTESzzqg', '1', '9Lo4abOTMv8NePf', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(52, 1, 1, 1, 1, '2018-06-18', 'DvH5rsNMRQRbe2C4KP0n', '1', '9dSOeifhJz0JXb7', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(53, 1, 1, 1, 1, '2018-06-18', 'ONyjNOJQ77zjVNPG4jq0', '1', 'Nya5zV2Cn4ORzvh', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(54, 1, 1, 1, 1, '2018-06-18', 'ibZxFp8GQmF0gNvofsRc', '1', 'xlQoXE9M1C0Dl7m', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(55, 1, 1, 1, 1, '2018-06-18', 'gDJO6ihfFNBuNf9Wlx87', '1', 'vszuqczGmHdUsv4', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(56, 1, 1, 1, 1, '2018-06-18', 'qyWWhNOk0Q9EhAFCvkQK', '1', 'RQl6qnigUgDE54X', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(57, 1, 1, 1, 1, '2018-06-18', '6X15HxEHK4FbmCSpUrwn', '1', 'aedX99RNoI29RH9', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(58, 1, 1, 1, 1, '2018-06-18', '2fqrFBmZs2qN7xawezpc', '1', 'q2jxoisRb1w7mg5', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(59, 1, 1, 1, 1, '2018-06-18', 'AZz5lmu5EXRmdpPEduOA', '1', 'E2qS6XY20avAbgz', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(60, 1, 1, 1, 1, '2018-06-18', 'J5W5lpB2hdt2EmBR6Orv', '1', 'teQdqCp63P0kO78', 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(61, 2018061901, 18, 29, 24, '2018-06-20', 'Nueva fuente de informacion', '20', 'Nuevo Autor', 7, 9, 4, 1, 3, 1, 6, 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
+(62, 0, 29, 15, 4, '2018-06-20', 'asdff', '222', 'Nuevo Autor 2', 7, 8, 2, 3, 3, 1, 11, 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
+(63, 0, 29, 15, 4, '2018-06-20', 'asdff', '222', 'Nuevo Autor 2', 7, 8, 2, 3, 3, 1, 11, 1, 0, 1, NULL, NULL, NULL, NULL, NULL),
+(64, 1, 2, 2, 2, '2018-06-21', 'asdgg', '12', 'asdgg', 2, 2, 2, 2, 2, 1, 2, 1, 1, 1, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -559,6 +633,31 @@ INSERT INTO `planta_has_uso` (`Planta_idPlanta`, `Uso_idUso`) VALUES
 (24, 9),
 (51, 15),
 (59, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reino`
+--
+
+CREATE TABLE `reino` (
+  `idReino` int(11) NOT NULL,
+  `nombre_reino` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `reino`
+--
+
+INSERT INTO `reino` (`idReino`, `nombre_reino`) VALUES
+(7, 'asdfgg'),
+(8, 'nuevo1'),
+(4, 'retyerhs'),
+(2, 'saedrfgaerfga'),
+(1, 'sdfgertfgaerfg'),
+(6, 'sdfgh4wse'),
+(5, 'sdfghw4etrfg'),
+(3, 'wertywrety');
 
 -- --------------------------------------------------------
 
@@ -680,7 +779,7 @@ CREATE TABLE `usuario` (
   `fecha_registro` date NOT NULL,
   `activo` tinyint(4) DEFAULT '1',
   `telefono` int(11) DEFAULT NULL,
-  `rol_idrol` int(11) NOT NULL,
+  `rol_idrol` int(11) DEFAULT NULL,
   `seccion_idseccion` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -818,6 +917,13 @@ INSERT INTO `zonacardinal` (`idZonaCardinal`, `nombre_cardinal`) VALUES
 --
 
 --
+-- Indices de la tabla `clase`
+--
+ALTER TABLE `clase`
+  ADD PRIMARY KEY (`idClase`),
+  ADD UNIQUE KEY `nombre_clase_UNIQUE` (`nombre_clase`);
+
+--
 -- Indices de la tabla `color`
 --
 ALTER TABLE `color`
@@ -841,6 +947,13 @@ ALTER TABLE `continente`
 --
 ALTER TABLE `determinadapor`
   ADD PRIMARY KEY (`idDeterminadaPor`);
+
+--
+-- Indices de la tabla `division`
+--
+ALTER TABLE `division`
+  ADD PRIMARY KEY (`idDivision`),
+  ADD UNIQUE KEY `nombre_division_UNIQUE` (`nombre_division`);
 
 --
 -- Indices de la tabla `epiteto`
@@ -912,6 +1025,13 @@ ALTER TABLE `nombrecomun`
   ADD KEY `fk_NombreComun_idPlanta_idx` (`Planta_idPlanta`);
 
 --
+-- Indices de la tabla `orden`
+--
+ALTER TABLE `orden`
+  ADD PRIMARY KEY (`idOrden`),
+  ADD UNIQUE KEY `nombre_orden_UNIQUE` (`nombre_orden`);
+
+--
 -- Indices de la tabla `planta`
 --
 ALTER TABLE `planta`
@@ -924,7 +1044,11 @@ ALTER TABLE `planta`
   ADD KEY `fk_Planta_Familia1_idx` (`Familia_idFamilia`),
   ADD KEY `fk_Planta_DeterminadaPor1_idx` (`DeterminadaPor_idDeterminadaPor`),
   ADD KEY `fk_Planta_Genero1_idx` (`Genero_idGenero`),
-  ADD KEY `fk_Planta_Epiteto1_idx` (`Epiteto_idEpiteto`);
+  ADD KEY `fk_Planta_Epiteto1_idx` (`Epiteto_idEpiteto`),
+  ADD KEY `fk_planta_orden2_idx` (`orden_idOrden`),
+  ADD KEY `fk_planta_clase2_idx` (`clase_idClase`),
+  ADD KEY `fk_planta_reino2_idx` (`reino_idReino`),
+  ADD KEY `fk_planta_division2_idx` (`division_idDivision`);
 
 --
 -- Indices de la tabla `planta_has_uso`
@@ -933,6 +1057,13 @@ ALTER TABLE `planta_has_uso`
   ADD PRIMARY KEY (`Planta_idPlanta`,`Uso_idUso`),
   ADD KEY `fk_Planta_has_Uso_Planta1_idx` (`Planta_idPlanta`),
   ADD KEY `fk_Planta_has_Uso_Uso1_idx` (`Uso_idUso`);
+
+--
+-- Indices de la tabla `reino`
+--
+ALTER TABLE `reino`
+  ADD PRIMARY KEY (`idReino`),
+  ADD UNIQUE KEY `nombre_reino_UNIQUE` (`nombre_reino`);
 
 --
 -- Indices de la tabla `rol`
@@ -977,6 +1108,12 @@ ALTER TABLE `zonacardinal`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `clase`
+--
+ALTER TABLE `clase`
+  MODIFY `idClase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `color`
 --
 ALTER TABLE `color`
@@ -999,6 +1136,12 @@ ALTER TABLE `continente`
 --
 ALTER TABLE `determinadapor`
   MODIFY `idDeterminadaPor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `division`
+--
+ALTER TABLE `division`
+  MODIFY `idDivision` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `epiteto`
@@ -1049,6 +1192,12 @@ ALTER TABLE `nombrecomun`
   MODIFY `idNombreComun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `orden`
+--
+ALTER TABLE `orden`
+  MODIFY `idOrden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `planta`
 --
 ALTER TABLE `planta`
@@ -1059,6 +1208,12 @@ ALTER TABLE `planta`
 --
 ALTER TABLE `planta_has_uso`
   MODIFY `Planta_idPlanta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT de la tabla `reino`
+--
+ALTER TABLE `reino`
+  MODIFY `idReino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tipohoja`
@@ -1132,10 +1287,19 @@ ALTER TABLE `nombrecomun`
 -- Filtros para la tabla `planta`
 --
 ALTER TABLE `planta`
-  ADD CONSTRAINT `fk_Planta_DeterminadaPor1` FOREIGN KEY (`DeterminadaPor_idDeterminadaPor`) REFERENCES `determinadapor` (`idDeterminadaPor`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Planta_Epiteto1` FOREIGN KEY (`Epiteto_idEpiteto`) REFERENCES `epiteto` (`idEpiteto`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Planta_Familia1` FOREIGN KEY (`Familia_idFamilia`) REFERENCES `familia` (`idFamilia`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Planta_Genero1` FOREIGN KEY (`Genero_idGenero`) REFERENCES `genero` (`idGenero`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_Planta_Clase` FOREIGN KEY (`clase_idClase`) REFERENCES `clase` (`idClase`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Planta_Color` FOREIGN KEY (`Color_idColor`) REFERENCES `color` (`idColor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Planta_Continente` FOREIGN KEY (`Continente_idContinente`) REFERENCES `continente` (`idContinente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Planta_DeterminadaPor` FOREIGN KEY (`DeterminadaPor_idDeterminadaPor`) REFERENCES `determinadapor` (`idDeterminadaPor`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Planta_Division` FOREIGN KEY (`division_idDivision`) REFERENCES `division` (`idDivision`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Planta_Epiteto` FOREIGN KEY (`Epiteto_idEpiteto`) REFERENCES `epiteto` (`idEpiteto`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Planta_Familia` FOREIGN KEY (`Familia_idFamilia`) REFERENCES `familia` (`idFamilia`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Planta_Forma` FOREIGN KEY (`Forma_idForma`) REFERENCES `forma` (`idForma`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Planta_Genero` FOREIGN KEY (`Genero_idGenero`) REFERENCES `genero` (`idGenero`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Planta_Orden` FOREIGN KEY (`orden_idOrden`) REFERENCES `orden` (`idOrden`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Planta_Reino` FOREIGN KEY (`reino_idReino`) REFERENCES `reino` (`idReino`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Planta_TipoHoja` FOREIGN KEY (`TipoHoja_idTipoHoja`) REFERENCES `tipohoja` (`idTipoHoja`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Planta_ZonaCardinal` FOREIGN KEY (`ZonaCardinal_idZonaCardinal`) REFERENCES `zonacardinal` (`idZonaCardinal`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `planta_has_uso`
