@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2018 a las 17:24:58
+-- Tiempo de generación: 01-07-2018 a las 02:33:13
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -650,6 +650,7 @@ CREATE TABLE `reino` (
 --
 
 INSERT INTO `reino` (`idReino`, `nombre_reino`) VALUES
+(9, '$nombre_reino'),
 (7, 'asdfgg'),
 (8, 'nuevo1'),
 (4, 'retyerhs'),
@@ -1213,7 +1214,7 @@ ALTER TABLE `planta_has_uso`
 -- AUTO_INCREMENT de la tabla `reino`
 --
 ALTER TABLE `reino`
-  MODIFY `idReino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idReino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tipohoja`
