@@ -1,0 +1,4 @@
+cuando el epiteto está nulo, el campo se debe llamar sp si y solo si el genero está definido.
+cambiar colaborador
+crear catalogo de funte de informacion.
+cambiar colores
