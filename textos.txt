@@ -1,0 +1,17 @@
+- colores del buscador.  http://sibcatie.com/buscar-flora-nativa.php
+	verde #c6d834
+	amarillo
+	naranja
+	azul cielo, claro
+	rojo
+	blanco hueso
+	café
+	rosado #f842bb
+	
+
+- textos de la pagina principal. http://localhost/software_SIBCATIE/index.php
+
+- ordenar historial del modal
+- error imagen principal del registro de especies
+- poner link del sitio en el correo de registro
+
